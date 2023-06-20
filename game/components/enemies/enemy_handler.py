@@ -1,4 +1,5 @@
 from game.components.enemies.ship import Ship
+from game.components.enemies.shipbigger import ShipBigger
 
 class EnemyHandler:
     def __init__(self):
@@ -16,9 +17,11 @@ class EnemyHandler:
             enemy.draw(screen)
 
     def add_enemy(self):
-        if len(self.enemies) < 2:
+        if len(self.enemies) < 6:
             self.enemies.append(Ship())
-    
+        if len(self.enemies) <= 1: 
+            self.enemies.append(ShipBigger())
+
     def remove_enemy(self, enemy):
         self.enemies.remove(enemy)
     

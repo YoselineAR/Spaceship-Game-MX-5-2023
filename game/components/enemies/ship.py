@@ -5,7 +5,6 @@ from game.utils.constants import ENEMY_1
 class Ship(Enemy):
     WIDTH = 40
     HEIGTH = 60
-    SPEED_Y = 10
 
     def __init__(self):
         self.image = ENEMY_1
