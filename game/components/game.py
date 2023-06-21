@@ -16,10 +16,10 @@ class Game:
         self.game_speed = 10
         self.x_pos_bg = 0
         self.y_pos_bg = 0
-        self.player = Spaceship()
+        self.bullet_handler = BulletHandler() 
+        self.player = Spaceship(self.bullet_handler)
         self.enemy_handler = EnemyHandler()
-        self.bullet_handler = BulletHandler()
-
+        
     def run(self):
         # Game loop: events - update - draw
         self.playing = True
@@ -37,9 +37,9 @@ class Game:
 
     def update(self):
         user_input = pygame.key.get_pressed()
-        self.player.update(user_input)
+        self.player.update(user_input, self.bullet_handler)
         self.enemy_handler.update(self.bullet_handler)
-        self.bullet_handler.update(self.player)
+        self.bullet_handler.update(self.player, self.enemy_handler.enemies)
         if not self.player.is_alive:
             pygame.time.delay(300)
             self.playing = False

@@ -1,4 +1,5 @@
 from game.utils.constants import SCREEN_HEIGHT
+
 class Bullet:
     
     def __init__(self, image, center):
