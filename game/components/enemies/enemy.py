@@ -17,6 +17,7 @@ class Enemy:
         self.rect.y = self.Y_POS
         self.mov_x = random.choice(self.MOV_X)
         self.is_alive = True
+        self.is_destruyed = False
         self.index = 0
         self.shooting_time = 0
 

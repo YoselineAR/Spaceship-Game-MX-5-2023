@@ -6,7 +6,7 @@ from game.utils.constants import BULLET_ENEMY
 class BulletEnemy(Bullet):
     WIDTH = 9
     HEIGHT = 32
-    SPEED = 20
+    SPEED = 25
     
     def __init__(self, center):
         self.image = BULLET_ENEMY

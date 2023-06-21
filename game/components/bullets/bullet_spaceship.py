@@ -15,3 +15,5 @@ class BulletSpaceship(Bullet):
     def update(self, enemy):
         self.rect.y -= self.SPEED
         super().update(enemy)
+        if not enemy.is_alive:
+            enemy.is_destruyed = True

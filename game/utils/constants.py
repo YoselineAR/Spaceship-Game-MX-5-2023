@@ -33,6 +33,9 @@ FONT_STYLE = 'freesansbold.ttf'
 BULLET_ENEMY_TYPE = "enemy"
 BULLET_SPACESHIP_TYPE = "usuario"
 
+BLACK_COLOR = (0, 0, 0)
+WHITE_COLOR = (255, 255, 255)
+
 LEFT = 'left'
 RIGHT = 'right'
 
