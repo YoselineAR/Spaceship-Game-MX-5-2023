@@ -17,3 +17,5 @@ class BulletSpaceship(Bullet):
         super().update(enemy)
         if not enemy.is_alive:
             enemy.is_destruyed = True
+
+            

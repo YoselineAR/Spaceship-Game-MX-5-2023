@@ -18,6 +18,7 @@ class Enemy:
         self.mov_x = random.choice(self.MOV_X)
         self.is_alive = True
         self.is_destruyed = False
+        self.health = 3
         self.index = 0
         self.shooting_time = 0
 
@@ -43,6 +44,7 @@ class Enemy:
             if self.index > self.INTERVAL or self.rect.right >= SCREEN_WIDTH:
                 self.mov_x = LEFT
                 self.index = 0
+        self.index += 1        
         
     def shoot(self, bullet_handler):
         if self.shooting_time % self.SHOOTING_TIME == 0:

@@ -2,6 +2,7 @@ import pygame
 import random
 from game.utils.constants import SPACESHIP, SCREEN_WIDTH, SCREEN_HEIGHT, BULLET_SPACESHIP_TYPE
 from game.components.bullets.bullet_handler import BulletHandler
+from game.components.enemies.enemy_handler import EnemyHandler
 
 class Spaceship:
     WIDTH = 40
@@ -17,8 +18,9 @@ class Spaceship:
         self.rect.y = self.Y_POS
         self.is_alive = True
         self.bullet_handler = bullet_handler
+        self.health = 3
 
-    def update(self, user_input, bullet_handler):
+    def update(self, user_input, bullet_handler, enemy_handler):
         if user_input[pygame.K_LEFT]:
             self.move_left()
 
@@ -33,7 +35,8 @@ class Spaceship:
 
         if user_input[pygame.K_SPACE]:
             self.shoot(bullet_handler)
-            
+
+        self.check_colliderect(enemy_handler)   
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
@@ -62,3 +65,11 @@ class Spaceship:
         self.rect.x = self.X_POS
         self.rect.y = self.Y_POS
         self.is_alive = True    
+
+    def check_colliderect(self, enemy_handler):
+        for enemy in enemy_handler.enemies:
+            if self.rect.colliderect(enemy.rect):
+                self.health -=1
+
+                if self.health <= 0:
+                    self.is_alive = False      

@@ -1,6 +1,7 @@
-from game.utils.constants import BULLET_ENEMY_TYPE, BULLET_SPACESHIP_TYPE
+from game.utils.constants import BULLET_ENEMY_TYPE, BULLET_SPACESHIP_TYPE, BULLET_SHIP_BIGGER_TYPE
 from game.components.bullets.bullet_enemy import BulletEnemy
 from game.components.bullets.bullet_spaceship import BulletSpaceship
+from game.components.bullets.bullet_shipbigger import BulletShipBigger
 
 class BulletHandler:
     def __init__(self):
@@ -13,6 +14,9 @@ class BulletHandler:
             elif type(bullet) is BulletSpaceship:
                 for enemy in enemies:
                     bullet.update(enemy)
+            elif type(bullet) is BulletShipBigger: 
+                       
+                    bullet.update(player)
             if not bullet.is_alive:
                 self.remove_bullet(bullet)
         
@@ -21,11 +25,13 @@ class BulletHandler:
             bullet.draw(screen)
     
     def add_bullet(self, type, center):
-        if type == BULLET_ENEMY_TYPE:
-            self.bullets.append(BulletEnemy(center))
+        if type in BULLET_ENEMY_TYPE:
+            self.bullets.append(BulletEnemy(center)) 
+        if type == BULLET_SHIP_BIGGER_TYPE:        
+            self.bullets.append(BulletShipBigger(center))
         if type == BULLET_SPACESHIP_TYPE:
-            self.bullets.append(BulletSpaceship(center))
-
+            self.bullets.append(BulletSpaceship(center))      
+            
     def remove_bullet(self, bullet):
         self.bullets.remove(bullet)
 
